@@ -4,26 +4,28 @@ services:
   hansel:
     container_name: hansel
     hostname: hansel
-    image: bitcoin-node
+    image: massmux/bitcoincore
     environment:
       - BX_CONFIG=/opt/wald/bx.cfg
     volumes:
       - ./hansel:/root/.bitcoin
+      - ./nodeworkdir:/opt/workdir
     entrypoint: /root/run.sh
-    working_dir: /opt/wald
+    working_dir: /opt/workdir
     ports:
       - 18443:18443
       - 18444:18444
   gretel:
     container_name: gretel
     hostname: gretel
-    image: bitcoin-node
+    image: massmux/bitcoincore
     environment:
       - BX_CONFIG=/opt/wald/bx.cfg
     volumes:
       - ./gretel:/root/.bitcoin
+      - ./nodeworkdir:/opt/workdir
     entrypoint: /root/run.sh
-    working_dir: /opt/wald
+    working_dir: /opt/workdir
     links:
       - hansel
     ports:
