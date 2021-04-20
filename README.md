@@ -1,39 +1,76 @@
-# Bitcoin in Action playground
+## Prerequisites install
 
-In questo repository si trova il materiale a supporto delle avventure con Bitcoin descritte su https://playground.bitcoininaction.com. Questo playground permette di creare un ambiente di test in regtest per chiunque voglia testare gli aspetti della tecnologia e provare quanto descritto nei libri indicati. Il playground è utile anche per sviluppatori e programmatori.
+This install has been tested on Ubuntu 20.04 running on a standard VPS. The distro needs docker fully running. This is the link for [ubuntu](https://docs.docker.com/engine/install/ubuntu/). A small recap of installing docker is here below:
 
-Questo playground è stato realizzato dagli autori dei libri "[Bitcoin dalla teoria alla pratica](https://www.amazon.com/Bitcoin-Dalla-teoria-pratica-Italian/dp/B07SNNNL2P)" / "[Bitcoin in Action](https://www.amazon.com/gp/product/B08NL5ZV6X)" e dell'omonimo canale [Bitcoin in Action](https://www.youtube.com/BitcoinInAction) con lo scopo di smorzare il piu' possibile la curva di apprendimento per sviluppare con Bitcoin script e sperimentare con il protocollo Bitcoin in generale. 
+```
+sudo apt-get update
+sudo apt-get install git curl wget
+sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+```
 
-L'ambiente permette di testare tutti gli aspetti della blockchain di Bitcoin attraverso una predisposizione di tutto quanto necessario in modo già preconfigurato e pronto all'uso, grazie a containers docker.
+Download the GPG key from the APT docker repo
 
-Seguono alcune delle simulazioni descritte su playground.bitcoininaction.com
+```
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+```
 
-- Collegare Bitcoin dekstop wallet
-	- Bitcoin Core wallet
-	  [link](https://playground.bitcoininaction.com/minare-il-primo-blocco-bitcoin/bitcoin-core-desktop)
-	- Electrum wallet
-	  [link](https://playground.bitcoininaction.com/minare-il-primo-blocco-bitcoin/electrum-desktop)
-- Lightning Network
-	- Aprire un canale
-	  [link](https://playground.bitcoininaction.com/lightning-network#aprire-un-canale-fra-electrum-e-c-lightning)
+Add APT repository that matches your CPU architecture
 
-## Ubuntu 20.04
+```
+echo \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
 
-Grazie a [Massimo Musumeci](https://github.com/massmux/) [@massmux](https://twitter.com/massmux) per aver integrato i seguenti passaggi di bootstrap del playground.
+Install docker & docker-compose
 
-[INSTALL.Ubuntu-20.04.md](INSTALL.Ubuntu-20.04.md)
+```
+apt-get update
+apt-get install docker-ce docker-ce-cli containerd.io
+apt-get install docker-compose
+```
+
+## Playground install
+
+First of all clone the repository
+
+```
+git clone https://github.com/bitcoin-dalla-teoria-alla-pratica/bitcoin-in-action-playground.git
+```
+
+Siamo pronti ora per lanciare i containers:
+
+```
+cd /root/bitcoin-in-action-playground/bitcoin-core
+docker-compose up
+```
+
+## Log into the "hansel" node
+
+To log into the bash of the hansel node, do as follows
+
+
+```
+root@playground:~# docker exec -ti hansel bash
+root@hansel:/opt/nodeworkdir# 
+```
+
+## Mine the first block
+
+The whole regtest is empty, there are no blocks. So the first step is create a new block by mining it. 
+
+```
+bitcoin-cli generatetoaddress 1 $(bitcoin-cli getnewaddress)
+```
 
 ## Run on Google Cloud Shell
 
 [![Open this project in Cloud
 Shell](http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/bitcoin-dalla-teoria-alla-pratica/bitcoin-in-action-playground.git&tutorial=gcp-shell-tutorial.md&shellonly=true)
 
-# Come inviare un feedback/segnalazioni
+## Original version
 
-Non esistate ad inviarci feedback e segnalazioni!!
+This playground has been created originally by authors of books (in italian) "[Bitcoin dalla teoria alla pratica](https://www.amazon.com/Bitcoin-Dalla-teoria-pratica-Italian/dp/B07SNNNL2P)" / "[Bitcoin in Action](https://www.amazon.com/gp/product/B08NL5ZV6X)" and channel [Bitcoin in Action](https://www.youtube.com/BitcoinInAction). Therefore many many thanks to Aglietti & Barnini
 
-E' possibile farlo da [qui](https://github.com/bitcoin-dalla-teoria-alla-pratica/playground/issues/new/choose)!
 
-# Il Bizantino e' anche su Twitter
 
-[![bizantino-twitter](https://i.ibb.co/cvzsXPk/bizantino-twitter.png)](https://twitter.com/satoshiwantsyou)
