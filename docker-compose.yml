@@ -4,34 +4,28 @@ services:
   hansel:
     container_name: hansel
     hostname: hansel
-    image: debian
+    image: massmux/bitcoincore
     environment:
-      - BX_CONFIG=/opt/wald/bx.cfg
+      - BX_CONFIG=/opt/nodeworkdir/bx.cfg
     volumes:
-      - ./bitcoin-core/bin/bitcoin-cli:/usr/bin/bitcoin-cli
-      - ./bitcoin-core/bin/bitcoind:/usr/bin/bitcoind
       - ./hansel:/root/.bitcoin
-      - ./wald:/opt/wald
-      - ./wald/vim/.vimrc:/root/.vimrc
-    entrypoint: /opt/wald/entrypoint.sh
-    working_dir: /opt/wald
+      - ./nodeworkdir:/opt/nodeworkdir
+    entrypoint: /root/run.sh
+    working_dir: /opt/nodeworkdir
     ports:
       - 18443:18443
       - 18444:18444
   gretel:
     container_name: gretel
     hostname: gretel
-    image: debian
+    image: massmux/bitcoincore
     environment:
-      - BX_CONFIG=/opt/wald/bx.cfg
+      - BX_CONFIG=/opt/nodeworkdir/bx.cfg
     volumes:
-      - ./bitcoin-core/bin/bitcoin-cli:/usr/bin/bitcoin-cli
-      - ./bitcoin-core/bin/bitcoind:/usr/bin/bitcoind
       - ./gretel:/root/.bitcoin
-      - ./wald:/opt/wald
-      - ./wald/vim/.vimrc:/root/.vimrc
-    entrypoint: /opt/wald/entrypoint.sh
-    working_dir: /opt/wald
+      - ./nodeworkdir:/opt/nodeworkdir
+    entrypoint: /root/run.sh
+    working_dir: /opt/nodeworkdir
     links:
       - hansel
     ports:
@@ -47,9 +41,9 @@ services:
     links:
       - bitcoinjs-regtest-server
       - gretel
-  blockchain-explorer:
-    container_name: blockchain-explorer
-    hostname: blockchain-explorer
+  explorer:
+    container_name: explorer
+    hostname: explorer
     image: blockstream/esplora
     environment:
       - DISABLE_TOR=1 # blockchain-exporer/runs.sh#L37-L45
@@ -58,8 +52,8 @@ services:
       - 50001:50001
       - 8094:80
     volumes:
-      - ./blockchain-explorer:/data
-      - ./blockchain-explorer/run.sh:/srv/explorer/run.sh # patch to disable Tor and auto mining of 100 blocks...
+      - ./explorer:/data
+      - ./explorer/run.sh:/srv/explorer/run.sh # patch to disable Tor and auto mining of 100 blocks...
     command: ['/srv/explorer/run.sh', 'bitcoin-regtest', 'explorer']
     links:
       - gretel

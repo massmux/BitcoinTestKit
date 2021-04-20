@@ -1,4 +1,5 @@
 *.un~
-bitcoin-core
 *.swp
 *.btcdeb_history
+__*
+regtest/*

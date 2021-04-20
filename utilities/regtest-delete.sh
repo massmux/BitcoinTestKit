@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Stopping containers"
 docker-compose stop
 
 sudo rm -Rf hansel/regtest
@@ -16,4 +17,5 @@ sudo rm -Rf lnd/lnd-data/letsencrypt
 sudo rm -Rf lnd/lnd-data/logs
 sudo rm -Rf lnd/lnd-data/tls*
 
-echo "=====> pulizia dei file completata, utilizza docker-compose start/up per avviare il playground <====="
+echo "=====> Files cleaned. Run docker-compose up to start the system again <====="
+
