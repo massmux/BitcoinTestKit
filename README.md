@@ -1,3 +1,7 @@
+# Bitcoin testing environment
+
+This is a bitcoin regtest environment tuned for security and privacy tests. Original version by Aglietti and Barnini as precisely mentioned below.
+
 ## Prerequisites install
 
 This install has been tested on Ubuntu 20.04 running on a standard VPS. The distro needs docker fully running. This is the link for [ubuntu](https://docs.docker.com/engine/install/ubuntu/). A small recap of installing docker is here below:
