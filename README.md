@@ -39,10 +39,10 @@ apt-get install docker-compose
 First of all clone the repository
 
 ```
-git clone https://github.com/bitcoin-dalla-teoria-alla-pratica/bitcoin-in-action-playground.git
+git clone https://github.com/massmux/BitcoinTestKit.git
 ```
 
-Siamo pronti ora per lanciare i containers:
+Now ready for running containers:
 
 ```
 cd /root/bitcoin-in-action-playground/bitcoin-core
