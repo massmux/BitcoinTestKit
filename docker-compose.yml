@@ -2,7 +2,7 @@ version: "3"
 
 services:
   hansel:
-    container_name: hansel
+    container_name: hansel   # bitcoin core node
     hostname: hansel
     image: massmux/bitcoincore
     environment:
@@ -16,7 +16,7 @@ services:
       - 18443:18443
       - 18444:18444
   gretel:
-    container_name: gretel
+    container_name: gretel   # bitcoin core node
     hostname: gretel
     image: massmux/bitcoincore
     environment:
@@ -49,8 +49,8 @@ services:
       - DISABLE_TOR=1 # blockchain-exporer/runs.sh#L37-L45
       - DISABLE_GENERATETOADDRESS=1 # blockchain-exporer/runs.sh#L256-L263
     ports:
-      - 50001:50001
-      - 8094:80
+      - 50001:50001   # port for connecting electrum, outside connection allowed
+      - 8094:80  # port for block explorer, outside connection allowed
     volumes:
       - ./explorer:/data
       - ./explorer/run.sh:/srv/explorer/run.sh # patch to disable Tor and auto mining of 100 blocks...
@@ -88,7 +88,7 @@ services:
     depends_on: [ hansel, gretel ]
     ports:
       - 9735:9735
-      - 9737:9737
+      - 9737:9737   #spark wallet, outside connection allowed
     volumes:
       - ./lightningd/lightning:/root/.lightning
       - ./lightningd/bitcoin:/root/.bitcoin
