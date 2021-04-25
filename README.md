@@ -34,7 +34,7 @@ apt-get install docker-ce docker-ce-cli containerd.io
 apt-get install docker-compose
 ```
 
-## Playground install
+## Kit install
 
 First of all clone the repository
 
@@ -63,6 +63,13 @@ root@hansel:/opt/nodeworkdir#
 
 The whole regtest is empty, there are no blocks. So the first step is create a new block by mining it. 
 
+if no wallet is defined, create one:
+```
+bitcoin-cli createwallet "hansel"
+```
+
+then mine to any wallet's address
+
 ```
 bitcoin-cli generatetoaddress 1 $(bitcoin-cli getnewaddress)
 ```
@@ -70,7 +77,7 @@ bitcoin-cli generatetoaddress 1 $(bitcoin-cli getnewaddress)
 ## Run on Google Cloud Shell
 
 [![Open this project in Cloud
-Shell](http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/bitcoin-dalla-teoria-alla-pratica/bitcoin-in-action-playground.git&tutorial=gcp-shell-tutorial.md&shellonly=true)
+Shell](http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/massmux/BitcoinTestKit.git&tutorial=gcp-shell-tutorial.md&shellonly=true)
 
 ## Original version
 
