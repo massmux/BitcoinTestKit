@@ -1,6 +1,6 @@
 # Bitcoin Test Kit
 
-This is a bitcoin regtest environment tuned for security and privacy tests. Original version by Aglietti and Barnini as precisely mentioned below. I had the honour of forking forking their original project
+This is a bitcoin regtest environment tuned for security and privacy tests. Original version by Aglietti and Barnini as precisely mentioned below. I had the honour of forking their original project in order to create a new version which is better tuned on my privacy&security analisys and didactics.
 
 ## Prerequisites install
 
