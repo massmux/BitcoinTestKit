@@ -4,7 +4,7 @@ services:
   hansel:
     container_name: hansel   # bitcoin core node
     hostname: hansel
-    image: massmux/bitcoincore
+    image: massmux/bitcoincore:v0.21.0
     environment:
       - BX_CONFIG=/opt/nodeworkdir/bx.cfg
     volumes:
@@ -18,7 +18,7 @@ services:
   gretel:
     container_name: gretel   # bitcoin core node
     hostname: gretel
-    image: massmux/bitcoincore
+    image: massmux/bitcoincore:v0.21.0
     environment:
       - BX_CONFIG=/opt/nodeworkdir/bx.cfg
     volumes:
@@ -33,7 +33,7 @@ services:
   oz:
     container_name: oz
     hostname: oz
-    image: node
+    image: massmux/bitcoincore:v0.21.0
     volumes:
       - ./oz:/opt/emerald-city
     entrypoint: ["/opt/emerald-city/entrypoint.sh"]
@@ -70,17 +70,6 @@ services:
     volumes:
       - ./bitcoinjs-regtest-server/bitcoin-data:/root/.bitcoin
       - ./bitcoinjs-regtest-server/run_bitcoind_service.sh:/root/run_bitcoind_service.sh # patch to disable mining of 432 blocks...
-  blockchain-reader:
-    container_name: blockchain-reader
-    hostname: blockchain-reader
-    image: tomcat
-    ports:
-      - 8080:8080 # Tomcat manager w/ user "tomcat" and pwd "tomcat" http://localhost:8080/manager/html
-    command: ["/opt/entrypoint.sh"]
-    volumes:
-      - ./blockchain-reader/tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
-      - ./blockchain-reader/tomcat/manager-webapp-context.xml:/opt/manager-webapp-context.xml
-      - ./blockchain-reader/entrypoint.sh:/opt/entrypoint.sh
   lightningd:
     container_name: lightningd
     hostname: lightningd
