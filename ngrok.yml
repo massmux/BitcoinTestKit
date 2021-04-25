@@ -1,0 +1,35 @@
+authtoken: NGROK_AUTH_TOKEN
+region: eu
+tunnels:
+  hansel-18443:
+    addr: 18443
+    proto: tcp
+  hansel-18444:
+    addr: 18444
+    proto: tcp
+  gretel-28444:
+    addr: 28444
+    proto: tcp
+  electrs-50001:
+    addr: 50001
+    proto: tcp
+  explorer-8094:
+    addr: 8094
+    proto: tcp
+  blockchain-reader-8080:
+    addr: 8080
+    proto: tcp
+  lightningd-9735:
+    addr: 9735
+    proto: tcp
+  spark-9737:
+    addr: 9737
+    proto: tcp
+  lnd-19735:
+    addr: 19735
+    proto: tcp
+  lnd-10009:
+    addr: 10009
+    proto: tcp
+
+
