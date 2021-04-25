@@ -1,1 +1,0 @@
-Questo container all'avvio attiva l'application server e mette in funzione https://github.com/yogh-io/bitcoin-yogh-explorer.

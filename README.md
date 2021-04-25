@@ -1,6 +1,6 @@
 # Bitcoin Test Kit
 
-This is a bitcoin regtest environment tuned for security and privacy tests. Original version by Aglietti and Barnini as precisely mentioned below. I had the honour of forking forking their original project
+This is a bitcoin regtest environment tuned for security and privacy tests. Original version by Aglietti and Barnini as precisely mentioned below. I had the honour of forking their original project in order to create a new version which is better tuned on my privacy&security analisys and didactics.
 
 ## Prerequisites install
 
@@ -34,7 +34,7 @@ apt-get install docker-ce docker-ce-cli containerd.io
 apt-get install docker-compose
 ```
 
-## Playground install
+## Kit install
 
 First of all clone the repository
 
@@ -63,14 +63,40 @@ root@hansel:/opt/nodeworkdir#
 
 The whole regtest is empty, there are no blocks. So the first step is create a new block by mining it. 
 
+if no wallet is defined, create one:
+```
+bitcoin-cli createwallet "hansel"
+```
+
+then mine to any wallet's address
+
 ```
 bitcoin-cli generatetoaddress 1 $(bitcoin-cli getnewaddress)
 ```
 
+## Ports and services
+
+- blockchain explorer interface is at port 8094
+- spark wallet is at port 9737
+- lightningd is available for channels opening at port 9735
+- LND is available for channels opening at port 19735
+- electrs is reachable on port 50001 for electrum connection
+
+## What you can immediately do
+
+- mine blocks
+- connect a bitcoin-qt wallet
+- connect electrum on port 50001
+- open a channel to lightningd and to LND from electrum
+- open a channel from LND to lightningd
+- move funds onchain and LN
+- query the blockchain through explorer and by using the bitcoin-cli
+
+
 ## Run on Google Cloud Shell
 
 [![Open this project in Cloud
-Shell](http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/bitcoin-dalla-teoria-alla-pratica/bitcoin-in-action-playground.git&tutorial=gcp-shell-tutorial.md&shellonly=true)
+Shell](http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/massmux/BitcoinTestKit.git&tutorial=gcp-shell-tutorial.md&shellonly=true)
 
 ## Original version
 
