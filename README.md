@@ -98,7 +98,7 @@ bitcoin-cli generatetoaddress 1 $(bitcoin-cli getnewaddress)
 [![Open this project in Cloud
 Shell](http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/massmux/BitcoinTestKit.git&tutorial=googleshell.md&shellonly=true)
 
-# How to connect to google cloud using ngrok
+### How to connect to google cloud using ngrok
 
 For connecting to google running the kit, from outside, we need to forward ports. In order to do that, we are using ngrok.
 
@@ -123,7 +123,6 @@ Now run in this way
 ```
 ngrok start electrs-50001 explorer-8094 lightningd-9735 lnd-19735
 ```
-
 all tunnels defined are available in the ngrok.yml file
 
 ## Original version
