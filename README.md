@@ -74,6 +74,25 @@ then mine to any wallet's address
 bitcoin-cli generatetoaddress 1 $(bitcoin-cli getnewaddress)
 ```
 
+## Ports and services
+
+- blockchain explorer interface is at port 8094
+- spark wallet is at port 9737
+- lightningd is available for channels opening at port 9735
+- LND is available for channels opening at port 19735
+- electrs is reachable on port 50001 for electrum connection
+
+## What you can immediately do
+
+- mine blocks
+- connect a bitcoin-qt wallet
+- connect electrum on port 50001
+- open a channel to lightningd and to LND from electrum
+- open a channel from LND to lightningd
+- move funds onchain and LN
+- query the blockchain through explorer and by using the bitcoin-cli
+
+
 ## Run on Google Cloud Shell
 
 [![Open this project in Cloud
