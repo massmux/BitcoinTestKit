@@ -117,6 +117,12 @@ services:
     image: shahanafarooqui/rtl:0.10.2
     ports:
       - 3000:3000
+    environment:
+      - LND_SERVER_URL=https://lnd:8080
+      - RTL_CONFIG_PATH=/root/config/    #pass rtl
+    volumes:
+      - ./rtl/config:/root/config
+      #- ./lnd/lnd-data:/root/gretel
     links:
       - lnd
       - gretel

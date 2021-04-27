@@ -1,0 +1,31 @@
+
+INFO: Config Setup Variable => PORT: 3000
+INFO: Config Setup Variable => HOST: null
+INFO: Config Setup Variable => DEFAULT NODE INDEX: 1
+INFO: Config Setup Variable => SSO: 0
+INFO: Config Setup Variable => LOGOUT REDIRECT LINK: 
+
+INFO: Config Setup Variable => INDEX: 1
+INFO: Config Setup Variable => LN NODE: alice
+INFO: Config Setup Variable => LN IMPLEMENTATION: LND
+INFO: Config Setup Variable => FIAT CONVERSION: false
+INFO: Config Setup Variable => CURRENCY UNIT: undefined
+INFO: Config Setup Variable => LN SERVER URL: https://lnd:8080
+INFO: Config Setup Variable => PORT: 3000
+INFO: Config Setup Variable => HOST: null
+INFO: Config Setup Variable => DEFAULT NODE INDEX: 1
+INFO: Config Setup Variable => SSO: 0
+INFO: Config Setup Variable => LOGOUT REDIRECT LINK: 
+
+INFO: Config Setup Variable => INDEX: 2
+INFO: Config Setup Variable => LN NODE: bob
+INFO: Config Setup Variable => LN IMPLEMENTATION: LND
+INFO: Config Setup Variable => FIAT CONVERSION: false
+INFO: Config Setup Variable => CURRENCY UNIT: undefined
+INFO: Config Setup Variable => LN SERVER URL: https://lnd:8080
+INFO: RTLConf => Getting Node Config
+INFO: RTLConf => Selected Node Updated To: "alice"
+INFO: RTLConf => Selected Node Updated To: "alice"
+INFO: GetInfo => Selected Node: "alice"
+INFO: GetInfo => Calling Info from LND server url: https://lnd:8080/v1/getinfo
+ERROR: GetInfo(17) => LND Get info failed due to bad or missing macaroon!
