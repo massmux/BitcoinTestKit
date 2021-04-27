@@ -111,3 +111,19 @@ services:
     links:
       - gretel
       - lightningd
+  rtl:
+    container_name: rtl
+    hostname: rtl
+    image: shahanafarooqui/rtl:0.10.2
+    ports:
+      - 3000:3000
+    links:
+      - lnd
+      - gretel
+
+
+
+
+
+
+
