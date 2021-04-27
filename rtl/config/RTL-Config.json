@@ -8,11 +8,11 @@
   "nodes": [
     {
       "index": 1,
-      "lnNode": "alice",
+      "lnNode": "gretel",
       "lnImplementation": "LND",
       "Authentication": {
-        "macaroonPath": "/alice/data/chain/bitcoin/regtest",
-        "configPath": "/alice"
+        "macaroonPath": "/gretel/data/chain/bitcoin/regtest",
+        "configPath": "/gretel"
       },
       "Settings": {
         "userPersona": "OPERATOR",
@@ -22,26 +22,7 @@
         "bitcoindConfigPath": "",
         "enableLogging": true,
         "fiatConversion": false,
-        "lnServerUrl": "https://alice:8090/v1"
-      }
-    },
-    {
-      "index": 2,
-      "lnNode": "bob",
-      "lnImplementation": "LND",
-      "Authentication": {
-        "macaroonPath": "/bob/data/chain/bitcoin/regtest",
-        "configPath": "/bob"
-      },
-      "Settings": {
-        "userPersona": "OPERATOR",
-        "themeMode": "DAY",
-        "themeColor": "BLUE",
-        "channelBackupPath": "/tmp",
-        "bitcoindConfigPath": "",
-        "enableLogging": true,
-        "fiatConversion": false,
-        "lnServerUrl": "https://bob:8100/v1"
+        "lnServerUrl": "https://lnd:8090/v1"
       }
     }
   ],

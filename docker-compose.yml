@@ -122,7 +122,7 @@ services:
       - RTL_CONFIG_PATH=/root/config/    #pass rtl
     volumes:
       - ./rtl/config:/root/config
-      #- ./lnd/lnd-data:/root/gretel
+      - ./rtl/lnd-data:/root/gretel
     links:
       - lnd
       - gretel
