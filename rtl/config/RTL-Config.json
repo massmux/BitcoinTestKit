@@ -11,7 +11,7 @@
       "lnNode": "gretel",
       "lnImplementation": "LND",
       "Authentication": {
-        "macaroonPath": "/gretel/data/chain/bitcoin/regtest",
+        "macaroonPath": "/root/data/chain/bitcoin/regtest/",
         "configPath": "/gretel"
       },
       "Settings": {
