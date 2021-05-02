@@ -8,8 +8,8 @@ services:
     environment:
       - BX_CONFIG=/opt/nodeworkdir/bx.cfg
     volumes:
-      - ./hansel:/root/.bitcoin
-      - ./nodeworkdir:/opt/nodeworkdir
+      - ${PWD}/hansel:/root/.bitcoin
+      - ${PWD}/nodeworkdir:/opt/nodeworkdir
     working_dir: /opt/nodeworkdir
     ports:
       - 18443:18443
@@ -21,8 +21,8 @@ services:
     environment:
       - BX_CONFIG=/opt/nodeworkdir/bx.cfg
     volumes:
-      - ./gretel:/root/.bitcoin
-      - ./nodeworkdir:/opt/nodeworkdir
+      - ${PWD}/gretel:/root/.bitcoin
+      - ${PWD}/nodeworkdir:/opt/nodeworkdir
     working_dir: /opt/nodeworkdir
     links:
       - hansel
@@ -33,7 +33,7 @@ services:
     hostname: oz
     image: massmux/bitcoincore:v0.21.0
     volumes:
-      - ./oz:/opt/emerald-city
+      - ${PWD}/oz:/opt/emerald-city
     entrypoint: ["/opt/emerald-city/entrypoint.sh"]
     working_dir: /opt/emerald-city
     links:
@@ -50,8 +50,8 @@ services:
       - 50001:50001   # port for connecting electrum, outside connection allowed
       - 8094:80  # port for block explorer, outside connection allowed
     volumes:
-      - ./explorer:/data
-      - ./explorer/run.sh:/srv/explorer/run.sh # patch to disable Tor and auto mining of 100 blocks...
+      - ${PWD}/explorer:/data
+      - ${PWD}/explorer/run.sh:/srv/explorer/run.sh # patch to disable Tor and auto mining of 100 blocks...
     command: ['/srv/explorer/run.sh', 'bitcoin-regtest', 'explorer']
     links:
       - gretel
@@ -66,8 +66,8 @@ services:
     links:
       - hansel
     volumes:
-      - ./bitcoinjs-regtest-server/bitcoin-data:/root/.bitcoin
-      - ./bitcoinjs-regtest-server/run_bitcoind_service.sh:/root/run_bitcoind_service.sh # patch to disable mining of 432 blocks...
+      - ${PWD}/bitcoinjs-regtest-server/bitcoin-data:/root/.bitcoin
+      - ${PWD}/bitcoinjs-regtest-server/run_bitcoind_service.sh:/root/run_bitcoind_service.sh # patch to disable mining of 432 blocks...
   lightningd:
     container_name: lightningd
     hostname: lightningd
@@ -77,10 +77,10 @@ services:
       - 9735:9735
       - 9737:9737   #spark wallet, outside connection allowed
     volumes:
-      - ./lightningd/lightning:/root/.lightning
-      - ./lightningd/bitcoin:/root/.bitcoin
-      - ./lightningd/entrypoint.sh:/opt/entrypoint.sh
-      - ./lightningd/spark-wallet:/root/.spark-wallet
+      - ${PWD}/lightningd/lightning:/root/.lightning
+      - ${PWD}/lightningd/bitcoin:/root/.bitcoin
+      - ${PWD}/lightningd/entrypoint.sh:/opt/entrypoint.sh
+      - ${PWD}/lightningd/spark-wallet:/root/.spark-wallet
     links:
       - hansel
     entrypoint: /opt/entrypoint.sh
@@ -90,8 +90,8 @@ services:
     image: lightninglabs/lnd:v0.12.1-beta
     depends_on: [ hansel, gretel ]
     volumes:
-      - ./lnd/lnd-data:/root/.lnd
-      - ./lnd/entrypoint.sh:/opt/entrypoint.sh
+      - ${PWD}/lnd/lnd-data:/root/.lnd
+      - ${PWD}/lnd/entrypoint.sh:/opt/entrypoint.sh
     entrypoint: ["/opt/entrypoint.sh"]
     environment:
       - NETWORK=regtest
