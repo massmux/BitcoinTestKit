@@ -45,7 +45,7 @@ git clone https://github.com/massmux/BitcoinTestKit.git
 Now ready for running containers:
 
 ```
-cd /root/bitcoin-in-action-playground/bitcoin-core
+cd ~/BitcoinTestKit
 docker-compose up
 ```
 

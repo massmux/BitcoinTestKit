@@ -10,7 +10,6 @@ services:
     volumes:
       - ./hansel:/root/.bitcoin
       - ./nodeworkdir:/opt/nodeworkdir
-    entrypoint: /root/run.sh
     working_dir: /opt/nodeworkdir
     ports:
       - 18443:18443
@@ -24,7 +23,6 @@ services:
     volumes:
       - ./gretel:/root/.bitcoin
       - ./nodeworkdir:/opt/nodeworkdir
-    entrypoint: /root/run.sh
     working_dir: /opt/nodeworkdir
     links:
       - hansel
