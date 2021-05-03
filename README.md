@@ -29,9 +29,9 @@ echo \
 Install docker & docker-compose
 
 ```
-apt-get update
-apt-get install docker-ce docker-ce-cli containerd.io
-apt-get install docker-compose
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo apt-get install docker-compose
 ```
 
 ## Kit install
@@ -44,6 +44,13 @@ git clone https://github.com/massmux/BitcoinTestKit.git
 
 Now ready for running containers:
 
+if not already, put your user in docker group
+
+```
+adduser YOURUSER docker
+```
+Then you are ready to run containers
+
 ```
 cd ~/BitcoinTestKit
 docker-compose up
@@ -55,8 +62,8 @@ To log into the bash of the hansel node, do as follows
 
 
 ```
-root@playground:~# docker exec -ti hansel bash
-root@hansel:/opt/nodeworkdir# 
+:~$ docker exec -ti hansel bash
+:/opt/nodeworkdir$
 ```
 
 ## Mine the first block
